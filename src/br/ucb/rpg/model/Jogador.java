@@ -6,8 +6,7 @@ package br.ucb.rpg.model;
     // 3. Crie um metodo chamado 'receberDano' que diminua a vida do jogador. [cite: 27]
     // 4. Crie a lógica de 'evoluir' para aumentar os atributos quando subir de nível. [cite: 24, 28]
 
-
-class Personagem {
+public class Personagem {
 
     private String nome;
     private int vida;
@@ -43,7 +42,7 @@ class Personagem {
         return this.defesa;
     }
 
-    // status,(menu) do jogador.
+    // Método para mostrar status
     public void mostrarStatus() {
         System.out.println("Nome: " + nome);
         System.out.println("Nível: " + nivel);
@@ -51,8 +50,8 @@ class Personagem {
         System.out.println("Ataque: " + ataque);
         System.out.println("Defesa: " + defesa);
     }
-
-    // Método principal, Sempre que o jogador vencer um combate: evolui um nível.
+ 
+    // método para mostrar seu nível atual
     public void evoluir() {
         nivel++;
         vida += 20;
@@ -62,5 +61,32 @@ class Personagem {
         System.out.println(nome + " subiu de nível!");
         System.out.println("Agora está no nível " + nivel);
     }
-}
 
+    // Atacar outro personagem
+    public void atacar(Personagem inimigo) {
+        int dano = this.ataque - inimigo.getDefesa();
+
+        if (dano <= 0) {
+            dano = 1; // garante dano mínimo
+        }
+
+        System.out.println(this.nome + " atacou " + inimigo.getNome() + " causando " + dano + " de dano!");
+
+        inimigo.receberDano(dano);
+    }
+
+    // Receber dano do combate 
+    public void receberDano(int dano) {
+        this.vida -= dano;
+
+        if (this.vida < 0) {
+            this.vida = 0;
+        }
+
+        System.out.println(this.nome + " agora tem " + this.vida + " de vida.");
+
+        if (this.vida == 0) {
+            System.out.println(this.nome + " foi derrotado!");
+        }
+    }
+}
