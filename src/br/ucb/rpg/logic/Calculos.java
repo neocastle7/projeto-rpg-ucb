@@ -36,5 +36,9 @@ public class Calculos {
         // Retorna o valor final do dano
         return dano;
     }
-
+        // Metodo de chance (drop)
+        //gera um valor aleatorio tipo double (0.00 ate 1.00) 0% a 100%
+        public static double gerarChance() {
+        return random.nextDouble();
+    }
 }
