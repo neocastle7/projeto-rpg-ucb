@@ -1,17 +1,7 @@
 package br.ucb.rpg.narrativa;
 
-// A minha classe responsável por gerenciar toda a narrativa e diálogos do jogo.
-// Segue os requisitos de Meio Ambiente e Acessibilidade no roteiro.
-
 public class Historia {
 
-    // Leonardo:
-    // 1. Crie métodos para imprimir os textos da história no console
-    // (System.out.println).
-    // 2. Escreva a introdução, as falas dos inimigos e o desfecho final.
-    // 3. Tente envolver o tema de "Meio Ambiente" ou "Acessibilidade" no roteiro.
-
-    // Método para a introdução do jogo
     public static void introducao() {
         System.out.println("\n==================================================");
         System.out.println("          RPG: O DESPERTAR DA NATUREZA            ");
@@ -25,8 +15,6 @@ public class Historia {
         System.out.println("--------------------------------------------------\n");
     }
 
-    // Método para falas dos inimigos durante o combate
-    // Recebe o nome do inimigo para personalizar a fala
     public static void falaInimigo(String nomeInimigo) {
         System.out.println("\n[" + nomeInimigo + " brada]:");
 
@@ -50,7 +38,6 @@ public class Historia {
         System.out.println("--------------------------------------------------");
     }
 
-    // Método para o desfecho final da aventura
     public static void desfecho() {
         System.out.println("\n==================================================");
         System.out.println("                VITÓRIA ECOLÓGICA                 ");
