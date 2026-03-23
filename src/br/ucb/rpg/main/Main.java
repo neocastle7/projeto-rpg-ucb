@@ -18,8 +18,8 @@ public class Main {
 
         Inimigo[] horda = {
                 new Inimigo("Goblin Sorrateiro", 30, 8, 5, "Lixo", "Cristal", 0.15, 0.05),
-                new Inimigo("Golem de Pedra", 100, 12, 15, "Pedra", "Núcleo", 0.10, 0.02),
-                new Inimigo("General Morto-Vivo", 300, 15, 10, "Ossos", "Coração", 1.0, 0.15)
+                new Inimigo("Golem de Pedra", 80, 12, 15, "Pedra", "Núcleo", 0.10, 0.02),
+                new Inimigo("General Morto-Vivo", 200, 15, 10, "Ossos", "Coração", 1.0, 0.15)
         };
 
         for (Inimigo atual : horda) {
@@ -33,25 +33,40 @@ public class Main {
                     Cenario.desenharBatalha(atual.getNome(), atual.getVida(), player.getVida());
                 }
 
-                System.out.println("\nMENU: [1] Atacar | [2] Especial (Carga: " + turnoEspecial + "/2)");
+                System.out.println("\nMENU: [1] Atacar | [2] Especial (Carga: " + turnoEspecial + "/2) | [3] Defender");
                 int acao = teclado.nextInt();
                 teclado.nextLine();
 
-                if (acao == 2 && turnoEspecial >= 2) {
-                    int danoEsp = player.atacar() * 2;
-                    atual.setVida(atual.getVida() - danoEsp);
-                    System.out.println("✨ ESPECIAL! Você causou " + danoEsp + " de dano!");
-                    turnoEspecial = 0;
-                } else {
+                boolean defendeu = false;
+
+                if (acao == 1) {
                     int dano = player.atacar();
                     atual.setVida(atual.getVida() - dano);
                     System.out.println("⚔️ Você causou " + dano + " de dano!");
                     if (turnoEspecial < 2) turnoEspecial++;
+
+                } else if (acao == 2) {
+                    if (turnoEspecial >= 2) {
+                        int danoEsp = player.atacar() * 2;
+                        atual.setVida(atual.getVida() - danoEsp);
+                        System.out.println("✨ ESPECIAL! Você causou " + danoEsp + " de dano!");
+                        turnoEspecial = 0;
+                    } else {
+                        System.out.println("❌ Especial ainda não carregado! Você perdeu a vez de bobeira...");
+                    }
+
+                } else if (acao == 3) {
+                    defendeu = true;
+                    System.out.println("🛡️ Você se preparou para o impacto!");
                 }
 
                 if (atual.getVida() > 0) {
                     System.out.println("\nTURNO DO INIMIGO...");
-                    atual.atacar(player);
+                    if (defendeu) {
+                        System.out.println("🛡️ O ataque de " + atual.getNome() + " bateu no seu escudo e não causou dano!");
+                    } else {
+                        atual.atacar(player);
+                    }
                     System.out.println("Pressione Enter para continuar...");
                     teclado.nextLine();
                 }

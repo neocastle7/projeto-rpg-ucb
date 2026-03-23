@@ -23,6 +23,7 @@ public class Personagem {
 
     public void receberDano(int dano) {
         this.vida -= dano;
+
         if (this.vida < 0) this.vida = 0;
         System.out.println(this.nome + " agora tem " + this.vida + " de vida.");
     }
