@@ -33,9 +33,27 @@ public class Main {
                     Cenario.desenharBatalha(atual.getNome(), atual.getVida(), player.getVida());
                 }
 
-                System.out.println("\nMENU: [1] Atacar | [2] Especial (Carga: " + turnoEspecial + "/2) | [3] Defender");
-                int acao = teclado.nextInt();
-                teclado.nextLine();
+                int acao = 0;
+                boolean acaoValida = false;
+
+                while (!acaoValida) {
+                    System.out.println("\nMENU: [1] Atacar | [2] Especial (Carga: " + turnoEspecial + "/2) | [3] Defender");
+                    System.out.print("Escolha sua ação: ");
+
+                    if (teclado.hasNextInt()) {
+                        acao = teclado.nextInt();
+                        teclado.nextLine();
+
+                        if (acao >= 1 && acao <= 3) {
+                            acaoValida = true;
+                        } else {
+                            System.out.println("❌ Opção inválida! Escolha 1, 2 ou 3.");
+                        }
+                    } else {
+                        System.out.println("❌ Erro: Digite apenas NÚMEROS (1, 2 ou 3).");
+                        teclado.nextLine();
+                    }
+                }
 
                 boolean defendeu = false;
 
