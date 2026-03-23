@@ -20,9 +20,9 @@ public class Main {
 
         // 3. Inimigos do Luan
         Inimigo[] horda = {
-                new Inimigo("Goblin Sorrateiro", 30, 8, "Lixo", "Cristal", 0.15, 0.05),
-                new Inimigo("Golem de Pedra", 100, 12, "Pedra", "Núcleo", 0.10, 0.02),
-                new Inimigo("General Morto-Vivo", 300, 15, "Ossos", "Coração", 1.0, 0.15)
+                new Inimigo("Goblin Sorrateiro", 30, 8, 5, "Lixo", "Cristal", 0.15, 0.05),
+                new Inimigo("Golem de Pedra", 100, 12, 15, "Pedra", "Núcleo", 0.10, 0.02),
+                new Inimigo("General Morto-Vivo", 300, 15, 10, "Ossos", "Coração", 1.0, 0.15)
         };
 
         for (Inimigo atual : horda) {
